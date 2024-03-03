@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import CONSTANTS from "../constants";
 
 async function sendHttpRequest(url, config) {
   const response = await fetch(url, config);
@@ -24,7 +25,7 @@ export default function useHttp(url, config, initialData) {
     async function sendRequest(data) {
       setIsLoading(true);
       try {
-        const resData = await sendHttpRequest(`https://bigbyte-food-order-app.onrender.com${url}`, { ...config, body: data });
+        const resData = await sendHttpRequest(`${CONSTANTS.API_URL}${url}`, { ...config, body: data });
         setData(resData);
       } catch (error) {
         setError(error.message || "Something went wrong");
