@@ -24,7 +24,7 @@ export default function useHttp(url, config, initialData) {
     async function sendRequest(data) {
       setIsLoading(true);
       try {
-        const resData = await sendHttpRequest(url, { ...config, body: data });
+        const resData = await sendHttpRequest(`https://bigbyte-food-order-app.onrender.com${url}`, { ...config, body: data });
         setData(resData);
       } catch (error) {
         setError(error.message || "Something went wrong");
